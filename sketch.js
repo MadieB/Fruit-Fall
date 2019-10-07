@@ -1,4 +1,4 @@
-//let basket
+let basket
 let orange
 let strawberry
 let lemon
@@ -11,19 +11,32 @@ function setup() {
   strawberry = new Strawberry()
   lemon = new Lemon()
   watermelon = new Watermelon()
-  //basket = new Basket()
+  basket = new Basket()
+   frameRate(30);
 }
 
 function draw() {
   background(143, 69, 0);
+
     orange.draw()
-    orange.update()
     strawberry.draw()
-    strawberry.update()
     lemon.draw()
-    lemon.update()
     watermelon.draw()
-    watermelon.update()
-    //basket.draw()
   
+    basket.draw()
+  
+    strawberry.update()
+    orange.update()
+    lemon.update()
+    watermelon.update()
+    basket.update()
+  
+}
+function keyPressed() {
+  basket.keyPressed()
+
+}
+
+function keyReleased() {
+  basket.stop()
 }
