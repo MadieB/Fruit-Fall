@@ -3,10 +3,11 @@ class Basket{
     this.x = (width/2)
     this.y = 300
     this.vx = 0;
-    this.width = 75
-    this.height = 25
+    this.width = 100
+    this.height = 50
     this.color = (88, 56, 31)
     this.SPEED = 5
+    this.score = 0
     this.active = true
   }
   draw() {
@@ -24,6 +25,12 @@ class Basket{
      
     this.x += this.vx
 
+  }
+  collect(fruit) {
+    if ( fruit.active && checkCC(this.x, this.y, this.width, fruit.x, fruit.y, fruit.width) ) {
+        fruit.collected()
+        this.score += 10
+    }
   }
   
   keyPressed() {

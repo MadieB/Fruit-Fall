@@ -11,27 +11,39 @@ function setup() {
   strawberry = new Strawberry()
   lemon = new Lemon()
   watermelon = new Watermelon()
+  fruits.push(orange)
+  fruits.push(strawberry)
+  fruits.push(lemon)
+  fruits.push(watermelon)
+  
   basket = new Basket()
    frameRate(30);
 }
 
 function draw() {
   background(143, 69, 0);
+    frameCount
+    fruits.filter(fruit => fruit.active).forEach(fruit =>{
+    fruit.update()
+    fruit.draw()
+  })
 
-    orange.draw()
-    strawberry.draw()
-    lemon.draw()
-    watermelon.draw()
-  
     basket.draw()
-  
-    strawberry.update()
-    orange.update()
-    lemon.update()
-    watermelon.update()
     basket.update()
   
+    checkCollisions()
+  
+    text(basket.score, 390, 390)
+  
 }
+
+function checkCollisions() {
+  for (let i = 0; i < fruits.length; i++) {
+     let fruit = fruits[i]
+     basket.collect(fruit)
+    }
+}
+
 function keyPressed() {
   basket.keyPressed()
 
@@ -39,4 +51,11 @@ function keyPressed() {
 
 function keyReleased() {
   basket.stop()
+}
+
+function checkCC(x, y,d, x2, y2, d2, b = 0) {
+  if( dist(x,y,x2,y2) <= (d/2)+(d2/2) + b){
+    return true;
+  }
+  return false;
 }
