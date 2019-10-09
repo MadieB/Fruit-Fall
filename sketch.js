@@ -1,4 +1,5 @@
 let basket
+let bomb
 let orange
 let strawberry
 let lemon
@@ -17,6 +18,7 @@ function setup() {
   fruits.push(watermelon)
   
   basket = new Basket()
+  bomb = new Bomb()
    frameRate(30);
 }
 
@@ -38,6 +40,9 @@ function draw() {
       strawberry = new Strawberry()
       fruits.push(strawberry)
     }
+    if (frameCount%150 == 0){
+      bomb = new Bomb()
+    }
   
     fruits.filter(fruit => fruit.active).forEach(fruit =>{
     fruit.update()
@@ -47,11 +52,18 @@ function draw() {
     basket.draw()
     basket.update()
   
+    bomb.draw()
+    bomb.update()
+  
     checkCollisions()
     checkDrop()
   
     text(basket.score, 380, 390)
-    text(frameCount, 10,10)
+  
+if(basket.collect(bomb)){
+    text("Game Over!", width/2, height/2)
+    basket.die()
+  }
 }
 
 function checkCollisions() {
@@ -59,6 +71,7 @@ function checkCollisions() {
      let fruit = fruits[i]
      basket.collect(fruit)
     }
+    basket.collect(bomb)
 }
 
 function checkDrop(){
