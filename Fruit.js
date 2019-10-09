@@ -1,11 +1,12 @@
 class Fruit{
-  constructor(x, y, w, h, c) {
+  constructor(x, y, w, h, c, s) {
     this.x = x
     this.y = y
     this.vy = 0;
     this.width = w
     this.height = h
     this.color = c
+    this.score = s
     this.SPEED = 5
     this.active = true
   }
@@ -16,7 +17,7 @@ class Fruit{
   move(dy) {
     this.vy = dy * this.SPEED
   }
-  collected() {
+  caught() {
     this.active = false
   }
   dropped() {

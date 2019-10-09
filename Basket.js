@@ -4,7 +4,7 @@ class Basket{
     this.y = 300
     this.vx = 0;
     this.width = 100
-    this.height = 50
+    this.height = 45
     this.color = (88, 56, 31)
     this.SPEED = 5
     this.score = 0
@@ -19,7 +19,7 @@ class Basket{
     this.vx = dx * this.SPEED
    }
    update() {
-    if (this.x <=this.width/2|| this.x>=400){
+    if (this.x <=this.width/2|| this.x>=350){
       this.vx = -this.vx
     }
      
@@ -27,9 +27,9 @@ class Basket{
 
   }
   collect(fruit) {
-    if ( fruit.active && checkCC(this.x, this.y, this.width, fruit.x, fruit.y, fruit.width) ) {
-        fruit.collected()
-        this.score += 10
+    if (fruit.active && checkCC(this.x, this.y, this.width, fruit.x, fruit.y, fruit.width) ) {
+        fruit.caught()
+        this.score += fruit.score
     }
   }
   

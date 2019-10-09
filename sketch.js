@@ -32,8 +32,9 @@ function draw() {
     basket.update()
   
     checkCollisions()
+    //checkDrop()
   
-    text(basket.score, 390, 390)
+    text(basket.score, 380, 390)
   
 }
 
@@ -41,6 +42,16 @@ function checkCollisions() {
   for (let i = 0; i < fruits.length; i++) {
      let fruit = fruits[i]
      basket.collect(fruit)
+    }
+}
+
+function checkDrop(){
+  for (let i = 0; i < fruits.length; i++) {
+     let fruit = fruits[i]
+     if (fruit.y >= 400){
+       fruit.dropped()
+       basket.score -= 10
+     }
     }
 }
 
