@@ -33,13 +33,6 @@ class Basket{
     }
   }
   
-  collect(bomb) {
-    if (bomb.active && checkCC(this.x, this.y, this.width, bomb.x, bomb.y, bomb.width) ) {
-        fruit.caught()
-        this.score -= this.score - 1
-    }
-  }
-  
   keyPressed() {
      if (keyCode === LEFT_ARROW) {
       this.move(-1, 0)
