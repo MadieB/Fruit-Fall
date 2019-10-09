@@ -22,7 +22,23 @@ function setup() {
 
 function draw() {
   background(143, 69, 0);
-    frameCount
+    if (frameCount%125 == 0){
+      watermelon = new Watermelon()
+      fruits.push(watermelon)
+    }
+    if (frameCount%100 == 0){
+      orange = new Orange()
+      fruits.push(orange)
+    }
+    if (frameCount%75 == 0){
+      lemon = new Lemon()
+      fruits.push(lemon)
+    }
+    if (frameCount%50 == 0){
+      strawberry = new Strawberry()
+      fruits.push(strawberry)
+    }
+  
     fruits.filter(fruit => fruit.active).forEach(fruit =>{
     fruit.update()
     fruit.draw()
@@ -32,10 +48,10 @@ function draw() {
     basket.update()
   
     checkCollisions()
-    //checkDrop()
+    checkDrop()
   
     text(basket.score, 380, 390)
-  
+    text(frameCount, 10,10)
 }
 
 function checkCollisions() {
@@ -48,7 +64,8 @@ function checkCollisions() {
 function checkDrop(){
   for (let i = 0; i < fruits.length; i++) {
      let fruit = fruits[i]
-     if (fruit.y >= 400){
+     if (fruit.active == false) continue
+     if (fruit.y >= 500){
        fruit.dropped()
        basket.score -= 10
      }
