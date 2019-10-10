@@ -50,11 +50,11 @@ function draw() {
     checkCollisions()
     checkDrop()
   
-    text(basket.score, 380, 390)
+    text(basket.score, 370, 390)
   
-if(basket.score < 0 ){
+if(basket.score < 0){
     text("Game Over!", width/2, height/2)
-    basket.die()
+    basket.active = false
   }
 }
 
