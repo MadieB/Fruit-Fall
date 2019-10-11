@@ -55,6 +55,7 @@ function draw() {
 if(basket.score < 0){
     text("Game Over!", width/2, height/2)
     basket.active = false
+    noLoop()
   }
 }
 
