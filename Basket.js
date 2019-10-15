@@ -19,7 +19,7 @@ class Basket{
     this.vx = dx * this.SPEED
    }
    update() {
-    if (this.x <=this.width/2|| this.x>=550){
+    if (this.x <=this.width/2|| this.x>=350){
       this.vx = -this.vx
     }
      
